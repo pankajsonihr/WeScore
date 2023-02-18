@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     tools:context=".MainActivity">
-
+    <!--A linearlayout for sports name-->
     <LinearLayout
         android:orientation="horizontal"
         android:layout_width="match_parent"
@@ -20,6 +20,7 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent" />
     </LinearLayout>
+    <!--A linearlayout for both team names-->
     <LinearLayout
         android:weightSum="2"
         android:orientation="horizontal"
@@ -45,7 +46,7 @@
 
 
     </LinearLayout>
-
+    <!--A linearlayout for + button-->
     <LinearLayout
         android:weightSum="2"
         android:orientation="vertical"
@@ -61,7 +62,7 @@
             android:layout_marginRight="70dp" />
 
     </LinearLayout>
-
+    <!--A linearlayout for - + buttons and score for both teams-->
     <LinearLayout
         android:weightSum="2"
         android:orientation="horizontal"
@@ -100,7 +101,7 @@
                 android:src="@drawable/plus"
                 />
         </LinearLayout>
-
+        <!--A linearlayout for sports -->
         <LinearLayout
             android:layout_weight="1"
             android:orientation="horizontal"
