@@ -7,6 +7,7 @@ import android.widget.ImageView
 import android.widget.Spinner
 import android.widget.TextView
 import android.widget.ToggleButton
+//This is group project by Pankaj, Siva Sai and Mahroon Nisha
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
     //private lateinit var binding: ActivityMainBinding my app keep crashing for this
