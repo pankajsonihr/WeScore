@@ -1,5 +1,7 @@
 <resources>
-    <string name="app_name">WeScore</string>
+    <string name="app_name">NewTest</string>
+    <string name="teamA">INDIA</string>
+    <string name="teamB">ENGLAND</string>
     <string-array name="my_spinner_items">
         <item>1</item>
         <item>2</item>

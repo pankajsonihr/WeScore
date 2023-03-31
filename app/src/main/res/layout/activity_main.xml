@@ -1,144 +1,184 @@
-<?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".MainActivity">
-    <!--A linearlayout for sports name-->
+    android:background="@color/white"
+    android:layout_gravity="top"
+    android:orientation="vertical">
     <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" >
-        <TextView
-            android:layout_weight="1"
-            android:text="Cricket"
-            android:textStyle="bold"
-            android:textSize="26dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-    </LinearLayout>
-    <!--A linearlayout for both team names-->
-    <LinearLayout
         android:weightSum="2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" >
-        <TextView
-            android:layout_weight="1"
-            android:text="IND"
-            android:textStyle="bold"
-            android:textSize="26dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-        <TextView
-            android:layout_weight="1"
-            android:text="ENG"
-            android:textStyle="bold"
-            android:textSize="26dp"
-            android:gravity="center"
-            android:layout_width="match_parent"
-            android:layout_height="match_parent" />
-
-
-    </LinearLayout>
-    <!--A linearlayout for + button-->
-    <LinearLayout
-        android:weightSum="2"
-        android:orientation="vertical"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_gravity="end"
-        android:gravity="right" >
-
-        <ImageView
-            android:id="@+id/engInc"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/plus"
-            android:layout_marginRight="70dp" />
-
-    </LinearLayout>
-    <!--A linearlayout for - + buttons and score for both teams-->
-    <LinearLayout
-        android:weightSum="2"
-        android:orientation="horizontal"
-        android:layout_width="match_parent"
-        android:layout_height="50dp" >
-
+        android:layout_gravity="center">
 
         <LinearLayout
-            android:layout_marginLeft="10dp"
-            android:layout_marginRight="10dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="center"
             android:layout_weight="1"
-            android:weightSum="3"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" >
+            android:padding="10dp"
+            android:visibility="visible">
             <ImageView
-                android:id="@+id/indDec"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/minus"/>
+                android:id="@+id/img_H_A"
+                style="@style/teamlogo"
+                android:src="@drawable/ind" />
 
             <TextView
-                android:id="@+id/indScore"
-                android:layout_weight="1"
-                android:text="14"
-                android:textStyle="bold"
-                android:textSize="40dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:id="@+id/team_Text_A"
+                style="@style/teamHeading"
+                android:text="@string/teamA"/>
 
-            <ImageView
-                android:id="@+id/indInc"
-                android:layout_weight="1"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"
-                android:src="@drawable/plus"
-                />
         </LinearLayout>
-        <!--A linearlayout for sports -->
+
         <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top"
+            android:gravity="center"
             android:layout_weight="1"
             android:orientation="horizontal"
-            android:layout_width="match_parent"
-            android:layout_height="50dp" >
+            android:padding="10dp"
+            android:visibility="visible">
+
+            <ImageView
+                android:id="@+id/img_H_B"
+                style="@style/teamlogo"
+                android:src="@drawable/eng" />
 
             <TextView
-                android:id="@+id/engScore"
-                android:layout_weight="1"
-                android:text="0"
-                android:textStyle="bold"
-                android:textSize="40dp"
-                android:layout_gravity="center"
-                android:gravity="center"
-                android:layout_width="match_parent"
-                android:layout_height="match_parent"/>
+                android:id="@+id/team_Text_B"
+                style="@style/teamHeading"
+                android:text="@string/teamB"/>
+
         </LinearLayout>
+
     </LinearLayout>
     <LinearLayout
-        android:layout_marginTop="20dp"
-        android:orientation="vertical"
         android:layout_width="match_parent"
-        android:layout_gravity="end"
-        android:gravity="right"
-        android:layout_height="50dp" >
+        android:layout_height="wrap_content"
+        android:orientation="horizontal">
 
-        <ImageView
-            android:id="@+id/engDec"
-            android:layout_width="50dp"
-            android:layout_height="50dp"
-            android:src="@drawable/minus"
-            android:layout_marginRight="70dp"
-            />
+        <androidx.cardview.widget.CardView
+            style="@style/cardView"
+            android:layout_weight="1"
+            app:cardBackgroundColor="#08466d"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/img_team_A"
+                                style="@style/teamlogo"
+                                android:src="@drawable/ind" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/indiaScore"
+                                    style="@style/scorebywicket" />
+
+                                <TextView
+                                    android:id="@+id/indOvers"
+                                    style="@style/oversinMatch" />
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/team_A"
+                    style="@style/teamTextName"
+                    android:text="@string/teamA" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
+
+        <androidx.cardview.widget.CardView
+            style="@style/cardView"
+            android:layout_weight="1"
+            app:cardBackgroundColor="#6c3339"
+            app:cardCornerRadius="8dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:orientation="horizontal"
+                        android:padding="10dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="15dp"
+                            android:orientation="horizontal">
+
+                            <ImageView
+                                android:id="@+id/img_team_B"
+                                style="@style/teamlogo"
+                                android:src="@drawable/eng" />
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginLeft="10dp"
+                                android:orientation="vertical">
+
+                                <TextView
+                                    android:id="@+id/englandScore"
+                                    style="@style/scorebywicket" />
+
+                                <TextView
+                                    android:id="@+id/engOvers"
+                                    style="@style/oversinMatch"/>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/team_B"
+                    style="@style/teamTextName"
+                    android:text="@string/teamB" />
+            </LinearLayout>
+        </androidx.cardview.widget.CardView>
     </LinearLayout>
     <LinearLayout
         android:orientation="vertical"
@@ -155,6 +195,39 @@
             android:layout_height="match_parent"
             android:entries="@array/my_spinner_items"
             android:tooltipText="Click to select an item" />
+
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center">
+        <ToggleButton
+            android:id="@+id/tgbutton"
+            style="@style/tgbutton" />
+    </LinearLayout>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:weightSum="3"
+        android:gravity="center">
+        <ImageView
+            android:id="@+id/Dec"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/minus"
+            android:layout_weight="1"/>
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"/>
+        <ImageView
+            android:id="@+id/Inc"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:src="@drawable/plus"
+            android:layout_weight="1">
+
+        </ImageView>
     </LinearLayout>
 
 </LinearLayout>
