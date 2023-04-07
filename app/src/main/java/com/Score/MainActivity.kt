@@ -1,16 +1,20 @@
 package com.Score
+import android.content.Intent
+import android.graphics.Color
+import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
 import android.util.Log
+import android.view.Menu
+import android.view.MenuInflater
+import android.view.MenuItem
 import android.view.View
-import android.widget.ImageView
-import android.widget.Spinner
-import android.widget.TextView
-import android.widget.ToggleButton
+import android.widget.*
+
 //This is group project by Pankaj, Siva Sai and Mahroon Nisha
 
 class MainActivity : AppCompatActivity(), View.OnClickListener{
-    //private lateinit var binding: ActivityMainBinding my app keep crashing for this
+    //private lateinit var binding: ActivityMainBinding
     private var engScore:Int=0
     private var engOverCounter:Int=0
     private var indScore:Int=0
@@ -19,8 +23,11 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        // Hide the action bar
-        supportActionBar?.hide()
+        // Set the title bar color
+        supportActionBar?.setBackgroundDrawable(ColorDrawable(Color.BLACK))
+
+        // Set the title bar text
+        supportActionBar?.title = "Score Board"
 
         findViewById<ImageView>(R.id.Inc).setOnClickListener(this)
         findViewById<ImageView>(R.id.Dec).setOnClickListener(this)
@@ -60,6 +67,33 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
         }
 
     }
+
+    override fun onCreateOptionsMenu(menu: Menu): Boolean {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        menuInflater.inflate(R.menu.menu_xml, menu)
+        return true
+    }
+
+    override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        // Handle item selection
+        return when (item.itemId) {
+            R.id.about -> {
+                // Display developer names
+                val message = "Developer: Siva sai, Mahroon Nisha, Pankaj"
+                Toast.makeText(this, message, Toast.LENGTH_SHORT).show()
+                true
+            }
+            R.id.settings -> {
+                // Open settings activity
+                val intent = Intent(this, SettingsActivity::class.java)
+                startActivity(intent)
+                true
+            }
+            else -> super.onOptionsItemSelected(item)
+        }
+    }
+
+
 
     //this function will update the score in our app for both teams
     private fun updateDisplay(){
