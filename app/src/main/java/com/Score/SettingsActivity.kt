@@ -1,16 +1,17 @@
 package com.Score
 
+import android.content.Context
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
 import android.os.Bundle
 import android.support.v7.app.AppCompatActivity
-import android.widget.SeekBar
+import android.widget.Button
 import android.widget.Switch
 
 class SettingsActivity : AppCompatActivity() {
 
     private lateinit var notificationSwitch: Switch
-    private lateinit var volumeSeekBar: SeekBar
+    private lateinit var saveButton: Button
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -23,7 +24,12 @@ class SettingsActivity : AppCompatActivity() {
 
         // Get references to UI components
         notificationSwitch = findViewById(R.id.notification_switch)
-        volumeSeekBar = findViewById(R.id.volume_seekbar)
+        saveButton = findViewById(R.id.save)
+
+        var indScore = intent.getIntExtra("indScore",0)
+        var engScore = intent.getIntExtra("engScore",0)
+        var indOvers = intent.getIntExtra("indOvers",0)
+        var engOvers = intent.getIntExtra("engOvers",0)
 
         // Set up event handlers
         notificationSwitch.setOnCheckedChangeListener { _, isChecked ->
@@ -34,19 +40,24 @@ class SettingsActivity : AppCompatActivity() {
                 // Disable notifications
             }
         }
+        saveButton.setOnClickListener {
+            // Get shared preferences
+            val sharedPreferences = getSharedPreferences("ScorePrefs", Context.MODE_PRIVATE)
 
-        volumeSeekBar.setOnSeekBarChangeListener(object : SeekBar.OnSeekBarChangeListener {
-            override fun onProgressChanged(seekBar: SeekBar?, progress: Int, fromUser: Boolean) {
-                // Handle volume seekbar change
-            }
+            // Get editor for shared preferences
+            val editor = sharedPreferences.edit()
 
-            override fun onStartTrackingTouch(seekBar: SeekBar?) {
-                // Not used in this example
-            }
+            // Save scores and overs
+            editor.putInt("indScore", indScore)
+            editor.putInt("engScore", engScore)
+            editor.putInt("indOvers", indOvers)
+            editor.putInt("engOvers", engOvers)
 
-            override fun onStopTrackingTouch(seekBar: SeekBar?) {
-                // Not used in this example
-            }
-        })
+            // Commit changes to shared preferences
+            editor.apply()
+        }
+
+
+
     }
 }

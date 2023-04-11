@@ -1,4 +1,5 @@
 package com.Score
+import android.content.Context
 import android.content.Intent
 import android.graphics.Color
 import android.graphics.drawable.ColorDrawable
@@ -20,6 +21,7 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
     private var indScore:Int=0
     private var indOverCounter:Int=0
     private lateinit var tgbutton:ToggleButton
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -28,12 +30,23 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
 
         // Set the title bar text
         supportActionBar?.title = "Score Board"
+        val sharedPreferences = getSharedPreferences("ScorePrefs", Context.MODE_PRIVATE)
+
+        // Retrieve scores and overs
+        indScore = sharedPreferences.getInt("indScore", 0)
+        engScore = sharedPreferences.getInt("engScore", 0)
+        indOverCounter = sharedPreferences.getInt("indOvers", 0)
+        engOverCounter = sharedPreferences.getInt("engOvers", 0)
+
 
         findViewById<ImageView>(R.id.Inc).setOnClickListener(this)
         findViewById<ImageView>(R.id.Dec).setOnClickListener(this)
         tgbutton = findViewById<ToggleButton>(R.id.tgbutton)
         updateDisplay()
     }
+
+
+
     //this will increase or decrease the score for both team based on spinner's selected score
     override fun onClick(v: View?) {
 
@@ -86,6 +99,10 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
             R.id.settings -> {
                 // Open settings activity
                 val intent = Intent(this, SettingsActivity::class.java)
+                intent.putExtra("indScore", indScore)
+                intent.putExtra("engScore", engScore)
+                intent.putExtra("indOvers", indOverCounter)
+                intent.putExtra("engOvers", engOverCounter)
                 startActivity(intent)
                 true
             }
@@ -103,14 +120,16 @@ class MainActivity : AppCompatActivity(), View.OnClickListener{
         if(engScore<0){
             engScore=0
         }
-        var overextraInd = indOverCounter%6
-        var overextraEng = engOverCounter%6
+        val overExtraInd = indOverCounter%6
+        val overExtraEng = engOverCounter%6
         findViewById<TextView>(R.id.indiaScore).text = indScore.toString()+"/0"
         findViewById<TextView>(R.id.englandScore).text = engScore.toString()+"/0"
-        findViewById<TextView>(R.id.indOvers).text = "Overs : "+indOverCounter/6+"."+overextraInd
-        findViewById<TextView>(R.id.engOvers).text = "Overs : "+engOverCounter/6+"."+overextraEng
+        findViewById<TextView>(R.id.indOvers).text = "Overs : "+indOverCounter/6+"."+overExtraInd
+        findViewById<TextView>(R.id.engOvers).text = "Overs : "+engOverCounter/6+"."+overExtraEng
 
     }
+
+
     private fun isToggleButtonOn(toggleButton: ToggleButton): Boolean {
         return toggleButton.isChecked
     }
