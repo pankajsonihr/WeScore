@@ -35,25 +35,16 @@ class SettingsActivity : AppCompatActivity() {
         notificationSwitch.setOnCheckedChangeListener { _, isChecked ->
             // Handle notification switch change
             if (isChecked) {
-                // Enable notifications
             } else {
-                // Disable notifications
             }
         }
         saveButton.setOnClickListener {
-            // Get shared preferences
             val sharedPreferences = getSharedPreferences("ScorePrefs", Context.MODE_PRIVATE)
-
-            // Get editor for shared preferences
             val editor = sharedPreferences.edit()
-
-            // Save scores and overs
             editor.putInt("indScore", indScore)
             editor.putInt("engScore", engScore)
             editor.putInt("indOvers", indOvers)
             editor.putInt("engOvers", engOvers)
-
-            // Commit changes to shared preferences
             editor.apply()
         }
 
