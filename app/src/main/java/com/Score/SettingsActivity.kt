@@ -46,7 +46,7 @@ class SettingsActivity : AppCompatActivity() {
             editor.putInt("indOvers", indOvers)
             editor.putInt("engOvers", engOvers)
             editor.apply()
-        }
+        }.0
 
 
 
